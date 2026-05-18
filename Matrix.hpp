@@ -5,13 +5,19 @@
 
 class Matrix{
     public:
-        Matrix(int rows, int columns);
-        Matrix(int order);
+        Matrix(const int& rows, const int& columns);
+        Matrix(const int& order);
         
         int Determinant();
-        int rowsQnt();
-        int columnsQnt();
-        void setValues();
+
+        int rowsQnt() const;
+        int columnsQnt() const;
+        double getValue(int& row, int& column) const;
+
+        void setValue(double& value, int& row, int& column);
+        void userSetValues();
+        void setValues(const std::vector<double>& values);
+
         void show();
 
     private:

@@ -1,22 +1,25 @@
 #include <iostream>
+#include <vector>
+
 #include "Matrix.hpp"
+#include "MatrixOps.hpp"
 
 using namespace std;
 
 int main() {
 
-    int x, y;
+    Matrix m1(2, 2);
+    Matrix m2(2, 2);
 
-    cout << "Insert the number of rows:" << endl;
-    cin >> x;
-    cout << "Insert the number of columns:" << endl;
-    cin >> y;
+    vector<double> v= {2,2,2,2};
 
-    Matrix m(x, y);
-    m.setValues();
-    m.show();
+    m1.setValues(v);
+    m2.setValues(v);
 
-    m.Determinant();
+    Matrix result = sum(m1, m2);
+
+    result.show();
+    cout << "Det(result) = " << result.Determinant() << endl;
 
     return 0;
 }

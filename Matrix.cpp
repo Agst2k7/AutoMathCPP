@@ -1,8 +1,9 @@
 #include "Matrix.hpp"
 
+#include <vector>
 #include <iostream>
 
-Matrix::Matrix(int rows, int columns) {
+Matrix::Matrix(const int& rows, const int& columns) {
     this->rows = rows;
     this->columns = columns;
 
@@ -11,13 +12,31 @@ Matrix::Matrix(int rows, int columns) {
     if (rows == columns) { this->isSquare = true; }
 }
 
-Matrix::Matrix(int order) {
+Matrix::Matrix(const int& order) {
     this->rows = order;
     this->columns = order;
     this->isSquare = true;
 }
 
-void Matrix::setValues() {
+double Matrix::getValue(int& row, int& column) const{
+    return matrix[row][column];
+}
+
+void Matrix::setValue(double& value, int& row, int& column) {
+    matrix[row][column] = value;
+}
+
+void Matrix::setValues(const std::vector<double>& values) {
+    int k = 0;
+
+    for (int r=0; r<rows; r++) {
+        for (int c=0; c<columns; c++, k++) {
+            matrix[r][c] = (double)values[k];
+        }
+    }
+}
+
+void Matrix::userSetValues() {
     double temp;
 
     for (int r=0; r<rows; r++) {
@@ -37,11 +56,11 @@ void Matrix::show() {
     }
 }
 
-int Matrix::columnsQnt(){
+int Matrix::columnsQnt() const{
     return columns;
 }
 
-int Matrix::rowsQnt() {
+int Matrix::rowsQnt() const{
     return rows;
 }
 
